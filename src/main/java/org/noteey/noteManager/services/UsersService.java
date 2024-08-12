@@ -1,18 +1,23 @@
-package org.noteManagementApplication.noteManager.services;
+package org.noteey.noteManager.services;
 
-import org.noteManagementApplication.data.models.User;
-import org.noteManagementApplication.noteManager.dtos.requests.RegisterUserRequest;
-import org.noteManagementApplication.noteManager.dtos.responses.RegisterUserResponse;
+
+import org.noteey.noteManager.data.models.User;
+import org.noteey.noteManager.dtos.requests.LoginRequest;
+import org.noteey.noteManager.dtos.responses.LoginResponse;
+import org.noteey.noteManager.dtos.responses.RegisterUserResponse;
+import org.noteey.noteManager.dtos.requests.RegisterUserRequest;
 
 import java.util.List;
 
 
 public interface UsersService {
-    RegisterUserResponse login(RegisterUserRequest request);
-    User findUserById(String id);
+    LoginResponse login(LoginRequest request);
+    User findUserById(String userId);
     boolean userExists(String username);
-    RegisterUserResponse addNewUser(RegisterUserRequest request);
+    RegisterUserResponse registerUser(RegisterUserRequest request);
     List<User> findAllUsers();
+    List<User> findSingleUserWithManyNotes();
 
 
+    void unshareWith(String userId, String noteId);
 }

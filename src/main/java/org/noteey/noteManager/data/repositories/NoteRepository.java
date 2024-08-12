@@ -1,9 +1,13 @@
-package org.noteManagementApplication.noteManager.data.repositories;
+package org.noteey.noteManager.data.repositories;
 
-import org.noteManagementApplication.noteManager.data.models.Notes;
+import org.noteey.noteManager.data.models.Note;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface NoteRepository extends MongoRepository<Notes, String> {
-    Notes findbyid(String id);
+import java.util.List;
+
+@Repository
+public interface NoteRepository extends MongoRepository<Note, String> {
+    Note findNoteByTitle(String title);
 
 }

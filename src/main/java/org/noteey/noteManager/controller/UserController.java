@@ -2,7 +2,9 @@ package org.noteey.noteManager.controller;
 
 import org.noteey.noteManager.apiresponses.Api;
 import org.noteey.noteManager.dtos.requests.LoginRequest;
+import org.noteey.noteManager.dtos.requests.RegisterUserRequest;
 import org.noteey.noteManager.dtos.responses.LoginResponse;
+import org.noteey.noteManager.dtos.responses.RegisterUserResponse;
 import org.noteey.noteManager.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,9 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/Api/v2")
-public class LoginServiceImplController {
+public class UserController {
     @Autowired
     private UsersService userService;
+
+    @RequestMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterUserRequest request) {
+        try{
+            RegisterUserResponse register = userService.registerUser(request);
+            return new ResponseEntity<>(register, HttpStatus.CREATED);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
+    }
     @RequestMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try{
@@ -27,4 +40,11 @@ public class LoginServiceImplController {
         }
 
     }
+//    @RequestMapping
+//    public ResponseEntity<?> findUserWithManyNotes(@RequestBody ) {
+//
+//
+//    }
+
+
 }

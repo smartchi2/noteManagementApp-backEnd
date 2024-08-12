@@ -1,4 +1,4 @@
-package org.noteManagementApplication.apiresponses;
+package org.noteey.noteManager.apiresponses;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

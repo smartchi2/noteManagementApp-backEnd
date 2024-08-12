@@ -1,20 +1,20 @@
-package org.noteManagementApplication.noteManager.services;
+package org.noteey.noteManager.services;
 
-import org.noteManagementApplication.noteManager.data.models.Notes;
-import org.noteManagementApplication.noteManager.dtos.responses.AddNoteResponse;
-import org.noteManagementApplication.noteManager.dtos.responses.UpdateNoteResponse;
-import org.noteManagementApplication.noteManager.dtos.responses.DeleteNoteResponse;
-import org.noteManagementApplication.noteManager.dtos.requests.AddNoteRequest;
-import org.noteManagementApplication.noteManager.dtos.requests.UpdateNoteRequest;
-import org.noteManagementApplication.noteManager.dtos.requests.DeleteNoteRequest;
+import org.noteey.noteManager.data.models.Note;
+import org.noteey.noteManager.dtos.requests.*;
+import org.noteey.noteManager.dtos.responses.*;
 
-import java.util.List;
+
 
 public interface NoteService {
-    AddNoteResponse addNote(AddNoteRequest note);
-    UpdateNoteResponse updateNote(UpdateNoteRequest note);
+    AddNoteResponse addNote(AddNoteRequest request);
+    UpdateNoteResponse updateNote(UpdateNoteRequest request);
     DeleteNoteResponse deleteNote(DeleteNoteRequest note);
-    Notes getNoteById(int id);
-    List<Notes> getAllNotes();
-
+    Note findById(String request);
+    FindAllNotesResponse allNotes(FindAllNotesRequest request);
+    ViewNoteResponse viewNote(ViewNoteRequest request);
+    Note findNoteByTitle(FindNoteByTitleRequest request);
+    Note shareNote(ShareNoteRequest request);
+    Note unshareNote(UnShareNoteRequest request);
+    DeleteAllResponse  deleteAll();
 }
